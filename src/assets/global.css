@@ -1,9 +1,13 @@
-body {
+:root {
+  --main-color: #2C7A7B;
+}
+
+* {
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1rem;
-  background-color:#000;
+  font-weight: bold;
 }
 
 h1 {

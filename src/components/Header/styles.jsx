@@ -5,8 +5,10 @@ export const HeaderContainer = styled.div`
   align-items: center;
   justify-content: center;
 
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  background-color: white;
+  color: var(--main-color);
+  text-transform: uppercase;
+  width: 100vw;
 
   h1 {
     font-size: 2rem;
