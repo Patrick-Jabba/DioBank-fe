@@ -1,12 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { CardContainer } from "./styles";
 
 import { Input, Box, Center, Button, InputGroup, InputRightElement } from "@chakra-ui/react";
 
 import { DButton } from "../Button";
-import IUserData from "../../interfaces/IUserData";
 
-import { api } from "../../api";
 import { login } from "../../services/login";
 
 export const CardComponent = () => {
@@ -14,17 +12,7 @@ export const CardComponent = () => {
   const handleClick = () => setShow(!show)
 
   const [email, setEmail] = useState('')
-  const [userData, setUserData] = useState<null | IUserData>()
-
-  useEffect(() => {
-    const getData = async () => {
-      const data: any | IUserData = await api
-      setUserData(data)
-      console.log(data)
-    }
-
-    getData()
-  }, [])
+  
 
   return (
     <CardContainer>
@@ -34,9 +22,12 @@ export const CardComponent = () => {
         borderRadius="25px" 
         padding="1rem"
         minHeight="50vh"
+        w="700px"
         >
-        { (userData === null || userData === undefined) && <h1>Loading...</h1>}
-      <Center>
+      <Center
+        color="#2c7a7b"
+        marginBottom="1rem"
+      >
        Faça o login
       </Center>
       <Input 

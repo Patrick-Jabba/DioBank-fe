@@ -1,5 +1,4 @@
 import { login } from "./login";
-import { api } from "../api";
 
 describe('login', () => {
   const mockAlert = jest.fn()

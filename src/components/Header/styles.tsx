@@ -9,6 +9,7 @@ export const HeaderContainer = styled.div`
   color: var(--main-color);
   text-transform: uppercase;
   width: 100vw;
+  border: 1px solid var(--main-color);
 
   h1 {
     font-size: 2rem;

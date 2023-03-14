@@ -1,5 +1,4 @@
 import { api } from "../api";
-import IUserData from "../interfaces/IUserData";
 
 export const login = async (email:string):Promise<void> => {
   const data: any = await api
