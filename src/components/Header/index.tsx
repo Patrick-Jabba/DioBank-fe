@@ -6,7 +6,7 @@ import { changeLocalStorage } from "../../services/storage";
 import { useNavigate } from "react-router-dom";
 
 export const Header = () => {
-  const { user, isLoggedIn, setIsLoggedIn } = useContext(AppContext)
+  const {userDataContext, isLoggedIn, setIsLoggedIn } = useContext(AppContext)
   const navigate = useNavigate();
 
   const logout = () => {
@@ -14,6 +14,7 @@ export const Header = () => {
       login: false
     })
     setIsLoggedIn(false)
+    localStorage.removeItem('userData')
     navigate('/')
   }
 
@@ -34,7 +35,7 @@ export const Header = () => {
               isLoggedIn && (
                 <>
                 <Text>
-                  Bem vindo { user }
+                  Bem vindo { userDataContext.name }
                 </Text>  
                 <Button
                   colorScheme="teal"

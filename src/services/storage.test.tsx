@@ -1,7 +1,15 @@
-import { changeLocalStorage, createLocalStorage, getAllLocalStorage } from "./storage"
+import { changeLocalStorage, createLocalStorage, getAllLocalStorage, createUserAtLocalStorage } from "./storage"
 
 const dioBank = {
   login: false
+}
+
+const userData = {
+  email: 'patrick@email.com',
+  name: 'Patrick',
+  password: '123456',
+  balance: 200,
+  id: 1
 }
 
 describe('storage', () => {
@@ -20,5 +28,10 @@ describe('storage', () => {
   it('should change the value of the object at the localStorage', () => {
     changeLocalStorage(dioBank)
     expect(mockSetItem).toHaveBeenCalledWith('diobank', JSON.stringify(dioBank))
+  })
+
+  it('should insert the user data in the local storage', () => {
+    createUserAtLocalStorage(userData)
+    expect(mockSetItem).toHaveBeenCalledWith('userData', JSON.stringify(userData))
   })
 })

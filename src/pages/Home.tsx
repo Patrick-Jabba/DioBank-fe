@@ -8,7 +8,9 @@ import { DButton } from "../components/Button";
 import { CardComponent } from "../components/CardComponent";
 
 import { login }  from "../services/login";
-import { changeLocalStorage } from "../services/storage";
+import { changeLocalStorage, createUserAtLocalStorage } from "../services/storage";
+import { api } from "../api";
+import IUserData from "../interfaces/IUserData";
 
 const Home = () => {
   const [email, setEmail] = useState('')
@@ -23,7 +25,10 @@ const Home = () => {
       alert('Email ou senha inválidos')
       return;
     }
+
+    const userData: IUserData | any = await api
     setIsLoggedIn(true)
+    createUserAtLocalStorage(userData)
     changeLocalStorage({
       login: true
     })
