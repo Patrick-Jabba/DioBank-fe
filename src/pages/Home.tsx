@@ -1,16 +1,37 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { Box, Button, Center, Input, InputGroup, InputRightElement } from "@chakra-ui/react";
 
+import { AppContext } from "../context/AppContextProvider";
 import { DButton } from "../components/Button";
 import { CardComponent } from "../components/CardComponent";
 
-import login  from "../services/login";
+import { login }  from "../services/login";
+import { changeLocalStorage } from "../services/storage";
 
 const Home = () => {
+  const [email, setEmail] = useState('')
+  const { setIsLoggedIn } = useContext(AppContext)
+  const navigate = useNavigate()
+
+  const validateUser = async (email: string) => {
+    const loggedIn = await login(email)
+
+    if(!loggedIn) {
+      alert('Email inválido')
+      return;
+    }
+    setIsLoggedIn(true)
+    changeLocalStorage({
+      login: true
+    })
+    navigate(`/conta/1`)
+  }
+
+
   const [show, setShow] = useState(false)
   const handleClick = () => setShow(!show)
-  const [email, setEmail] = useState('')
   return (
         <Box padding="25px">
           <CardComponent>
@@ -60,7 +81,7 @@ const Home = () => {
 
         <Center>
         <DButton
-          onClick={() => login(email)}
+          onClick={() => validateUser(email)}
           text="Entrar"
         />
         </Center>
