@@ -17,13 +17,14 @@ jest.mock('react-router-dom', () => ({
 
 describe('login', () => {
   const mockEmail = 'patrick@email.com'
+  const mockPassword = '123456'
   it('should show an alert with welcome message when the email is valid', async () => {
-    const response = await login(mockEmail);
+    const response = await login(mockEmail, mockPassword);
     expect(response).toBeTruthy()
   })
 
   it('should show an error when email is invalid', async () => {
-    const response = await login('email@invalido.com')
+    const response = await login('email@invalido.com', '654321')
     expect(response).toBeFalsy()
   })
 })

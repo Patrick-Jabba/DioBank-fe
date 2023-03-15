@@ -12,14 +12,15 @@ import { changeLocalStorage } from "../services/storage";
 
 const Home = () => {
   const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const { setIsLoggedIn } = useContext(AppContext)
   const navigate = useNavigate()
 
-  const validateUser = async (email: string) => {
-    const loggedIn = await login(email)
+  const validateUser = async (email: string, password: string) => {
+    const loggedIn = await login(email, password)
 
     if(!loggedIn) {
-      alert('Email inválido')
+      alert('Email ou senha inválidos')
       return;
     }
     setIsLoggedIn(true)
@@ -49,7 +50,6 @@ const Home = () => {
             Faça o login
           </Center>
         <Input 
-        htmlSize={10}
           placeholder="email" 
           value={email}
           onChange={(event) => setEmail(event.target.value)}
@@ -59,11 +59,12 @@ const Home = () => {
           
         <InputGroup size='md'>
         <Input
-          pr='4.5rem'
-          type={show ? 'text' : 'password'}
           placeholder='password'
-          marginTop="1rem"
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
           focusBorderColor="#2C7A7B"
+          marginTop="1rem"
+          type={show ? 'text' : 'password'}
           />
         <InputRightElement width='4.5rem' marginTop="1rem">
           
@@ -81,7 +82,7 @@ const Home = () => {
 
         <Center>
         <DButton
-          onClick={() => validateUser(email)}
+          onClick={() => validateUser(email, password)}
           text="Entrar"
         />
         </Center>
