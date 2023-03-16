@@ -14,6 +14,7 @@ export const DButton = ({ onClick, text }: IDButton) => {
       size="sm"
       width="100%"
       marginTop="3rem"
+      type="submit"
     >
       {text}
     </Button>

@@ -39,9 +39,9 @@ const Home = () => {
   const [show, setShow] = useState(false)
   const handleClick = () => setShow(!show)
   return (
-        <Box padding="25px">
-          <CardComponent>
-          <Box 
+    <Box padding="25px">
+      <CardComponent>
+        <Box 
             bg="#fff" 
             borderRadius="25px" 
             padding="1rem"
@@ -54,46 +54,50 @@ const Home = () => {
           >
             Faça o login
           </Center>
-        <Input 
-          placeholder="email" 
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-          focusBorderColor="#2C7A7B"
-          color="#2c7a7b"
-          />
-          
-        <InputGroup size='md'>
-        <Input
-          placeholder='password'
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-          focusBorderColor="#2C7A7B"
-          marginTop="1rem"
-          type={show ? 'text' : 'password'}
-          />
-        <InputRightElement width='4.5rem' marginTop="1rem">
-          
-          <Button 
-            h='1.75rem' 
-            size='sm' 
-            onClick={handleClick}
-            bg="#2C7A7B"
-            color="#fff"
-          >
-            {show ? 'Hide' : 'Show'}
-          </Button>
-        </InputRightElement>
-      </InputGroup>
-
-        <Center>
-        <DButton
-          onClick={() => validateUser(email, password)}
-          text="Entrar"
-        />
-        </Center>
-      </Box>
-          </CardComponent>
+          <form>
+            <Input
+              placeholder="email"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              focusBorderColor="#2C7A7B"
+              color="#2c7a7b"
+            />
+            
+            <InputGroup size='md'>
+            <Input
+              placeholder='password'
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              focusBorderColor="#2C7A7B"
+              marginTop="1rem"
+              type={show ? 'text' : 'password'}
+            />
+            <InputRightElement
+              width='4.5rem'
+              marginTop="1rem"
+            >
+            
+            <Button
+              h='1.75rem'
+              size='sm'
+              onClick={handleClick}
+              bg="#2C7A7B"
+              color="#fff"
+            >
+              {show ? 'Hide' : 'Show'}
+            </Button>
+            </InputRightElement>
+            </InputGroup>
+            <Center>
+            <DButton
+              onClick={() => validateUser(email, password)}
+              text="Entrar"
+            />
+            </Center>
+          </form>
         </Box>
+      </CardComponent>
+    </Box>
   )
 }
 

@@ -1,5 +1,5 @@
 import {useEffect, useState, useContext } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 
 import { Center, SimpleGrid, Spinner } from "@chakra-ui/react"
 
@@ -55,10 +55,12 @@ const Conta = () => {
               title="Informações de acesso:"
               text={actualData.toLocaleString()}
             />
-                   <CardInfo
-            title="Informações da conta"
-            text={`Saldo: ${userData?.balance}`}
-                    />
+            <Link to="/infoconta">
+              <CardInfo
+                title="Informações da conta"
+                text={`Saldo: ${userData?.balance}`}
+              />
+            </Link>
           </>
         }
       </SimpleGrid>

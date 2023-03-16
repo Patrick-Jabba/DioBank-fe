@@ -20,12 +20,12 @@ export const AppContextProvider = ({ children }:any) => {
   }
 
   useEffect(() => {
-    if(storage) {
+    if(storage && getUserDataFromStorage) {
       const { login } = JSON.parse(storage)
       setIsLoggedIn(login)
       getData()
     }
-  }, [getUserDataFromStorage])
+  }, [storage, getUserDataFromStorage])
 
   return (
     <>

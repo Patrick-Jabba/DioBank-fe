@@ -35,7 +35,7 @@ export const Header = () => {
               isLoggedIn && (
                 <>
                 <Text>
-                  Bem vindo { userDataContext.name }
+                  Bem vindo { userDataContext?.name }
                 </Text>  
                 <Button
                   colorScheme="teal"
